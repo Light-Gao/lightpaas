@@ -1,0 +1,16 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- include: initos.yaml
+
+- include: vsftpd.yaml
+  when: ansible_default_ipv4.address in groups.vsftpd
+
+- include: repos.yaml
+
+- include: ntpserver.yaml
+  when: ansible_default_ipv4.address in groups.ntpserver
+
+- include: usermgr.yaml

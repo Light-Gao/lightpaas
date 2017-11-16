@@ -1,0 +1,33 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- name: copy zookeeper tarball
+  copy:
+    src: "{{ zk_src_dir }}"
+    dest: "{{ zk_install_dir }}"
+  when: zk_tarball
+
+- name: unarchive zookeeper tarball
+  unarchive:
+    copy: no
+    src: "{{ zk_install_dir }}/zookeeper-{{ zk_version }}.tgz"
+    dest: "{{ zk_install_dir }}"
+    creates: "{{ zk_data_dir }}/myid"
+
+- name: config zoo.cfg
+  template:
+    src: zoo.cfg.j2
+    dest: "{{ zk_conf_dir }}/zoo.cfg"
+
+- name: touch myid
+  file:
+    state: touch
+    path: "{{ zk_data_dir }}"
+    owner: "{{ zk_user }}"
+    group: "{{ zk_group }}"
+  when: not zk_standalone
+
+- name: config myid
+  shell: echo {{ myid }} > "{{ zk_data_dir }}/myid"

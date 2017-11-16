@@ -1,0 +1,3 @@
+{% for host in groups.paas %}
+{{hostvars[host]['ansible_default_ipv4']['address']}}  {{hostvars[host]['ansible_hostname']}}
+{% endfor %}

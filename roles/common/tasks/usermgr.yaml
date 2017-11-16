@@ -1,0 +1,21 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171115
+
+- name: group manager
+  group:
+    name="{{item.value.group}}"
+    state=present
+    gid="{{item.value.uid}}"
+  with_dict: "os_users"
+
+- name: user manager
+  user: 
+    name="{{item.key}}"
+    state=present
+    password="{{item.value.passwd}}"
+    home="{{item.value.home}}"
+    group="{{item.value.group}}"
+    uid="{{item.value.uid}}"
+  with_dict: "os_users"

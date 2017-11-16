@@ -1,0 +1,37 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171110
+
+#os params
+os_time_zone: Asia/Shanghai
+os_selinux_conf: /etc/selinux/config
+
+#os users info define
+os_users:
+  light:
+    uid: 806
+    group: light
+    home: /home/light
+    passwd: abc123
+  xjtest:
+    uid: 807
+    group: xjtest
+    home: /home/xjtest
+    passwd: abc123
+
+#os_user_passwd: abc123
+#os_user_id: 806
+#os_group: "{{os_user}}"
+#os_group_id: "{{os_user_id}}"
+
+#yum params
+yum_repo_name: mesosphere
+
+yum_on_ftp: true
+yum_on_local: false
+
+yum_ftp_url: "ftp://{{ play_hosts }}/pub/{{ yum_repo_name }}"
+yum_local_dir: /opt/paas/downloads
+
+

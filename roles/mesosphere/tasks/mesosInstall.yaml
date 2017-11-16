@@ -1,0 +1,21 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- name: install mesos
+  yum: pkg=mesos state=installed
+
+- name: mesos zk configure
+  shell: echo {{mesos_zk_url}} > /etc/mesos/zk
+
+
+- name: enable mesos-master
+  service: name=mesos-master enabled=yes
+  when: ansible_default_ipv4.address in groups.master
+
+
+- name: enable mesos-slave
+  service: name=mesos-slave enabled=yes
+  when: ansible_default_ipv4.address in groups.slave
+

@@ -1,0 +1,11 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- name: check for test
+  fail:
+    msg: >
+      Just for test!
+  when:
+    - check_vars is not defined

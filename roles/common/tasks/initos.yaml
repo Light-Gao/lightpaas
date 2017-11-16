@@ -1,0 +1,34 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- name: hostname setup
+  command: hostnamectl set-hostname {{newname}}
+  
+- name: timezone setup
+  command: timedatectl set-timezone {{os_time_zone}}
+
+- name: time adjust
+  shell: rm -f /etc/localtime; ln -s /usr/share/zoneinfo/{{os_time_zone}}  /etc/localtime ; hwclock -r
+
+- name: crontab setup
+  shell: echo "* 1 * * *  ntpdate {{groups.ntpserver[0]}} && hwclock -w" >> /var/spool/cron/root
+  when: ansible_default_ipv4.address not in groups.ntpserver
+
+- name: disable selinux
+  shell: sed -i '7c SELINUX=disabled' {{os_selinux_conf}}
+
+- name: disable firewall
+  command: systemctl disable firewalld.service
+
+- name: stop firewall
+  command: systemctl stop firewalld.service
+
+- name: hosts configure
+  template:
+    src: hosts.j2
+    dest: /etc/hosts
+    mode: 0644
+
+

@@ -1,0 +1,16 @@
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+tickTime={{ zk_ticktime }}
+initLimit={{ zk_init_limit }}
+syncLimit={{ zk_sync_limit }}
+dataDir={{ zk_data_dir }}
+dataLogDir={{ zk_log_dir }}
+clientPort={{ zk_client_port }}
+
+{% if not zk_standalone %}
+{% for host in play_hosts %}
+server.{{ loop.index0 }}={{ hostvars[host]['ansible_default_ipv4']['address'] }}:{{ zk_com_port }}:{{ zk_election_port }} 
+{% endfor %}
+{% endif %}

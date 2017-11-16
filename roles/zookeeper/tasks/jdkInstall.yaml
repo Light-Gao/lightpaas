@@ -1,0 +1,25 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- name: copy jdk tarball
+  copy:
+    src: "{{ jdk_src_dir }}"
+    dest: "{{ jdk_install_dir }}"
+
+- name: unarchive jdk tarball
+  unarchive:
+    copy: no
+    src: "{{ jdk_install_dir }}/jdk{{ jdk_version }}.tgz"
+    dest: "{{ jdk_install_dir }}"
+    creates: "{{ jdk_install_dir }}/jdk{{ jdk_version }}/bin/java"
+
+- name: config java 
+  template:
+    src: bash_profile.j2
+    dest: ~/.bash_profile
+
+
+- name: source profile
+  shell: source ~/.bash_profile

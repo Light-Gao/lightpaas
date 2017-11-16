@@ -1,0 +1,24 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171110
+
+yum_repo_name: mesosphere
+
+yum_on_ftp: true
+yum_on_local: false
+
+yum_local_dir: /opt/paas
+mesosphere_rpm_tarball: "{{ yum_local_dir }}/mesosphere.tar.gz"
+
+yum_ftp_url: "ftp://{{ ansible_default_ipv4.address }}/pub/{{ yum_repo_name }}"
+
+mesosphere_rpm_dir: "{{ yum_local_dir }}/{{ yum_repo_name }}"
+ftp_yum_dir: "/var/ftp/pub"
+
+##mesos configure
+mesos_zk_port: 2981
+mesos_zk_url: "zk://{{groups.master[0]}}:{{mesos_zk_port}},{{groups.master[1]}}:{{mesos_zk_port}},{{groups.master[2]}}:{{mesos_zk_port}}/mesos"
+mesos_quorum: 2
+mesos_work_dir: /var/lib/mesos
+mesos_containerizers: docker,mesos

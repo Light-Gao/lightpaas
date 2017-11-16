@@ -1,0 +1,15 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171113
+
+- name: containerizers configur
+  shell: echo {{mesos_containerizers}} > /etc/mesos-slave/containerizers
+  when: ansible_default_ipv4.address in groups.slave
+  notify: restart mesos-slave
+
+- name: work directory configur
+  shell: echo {{mesos_work_dir}} > /etc/mesos-slave/work_dir
+  when: ansible_default_ipv4.address in groups.slave
+  notify: restart mesos-slave
+

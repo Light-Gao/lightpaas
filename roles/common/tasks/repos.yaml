@@ -1,0 +1,11 @@
+---
+
+#Author Light Gao
+#Mailto gaoliang@asiainfo.com
+#Date   20171110
+
+- name: prepare repos file
+  template:
+    src: centos.repo.j2
+    dest: /etc/yum.repos.d/centos.repo
+    mode: 0644

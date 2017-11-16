@@ -1,0 +1,29 @@
+---
+
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171110
+
+- name: unarchive rpms tarball
+  unarchive:
+    copy: no
+    src: "{{ mesosphere_rpm_tarball }}"
+    dest: "{{ yum_local_dir }}"
+    creates: "{{ yum_local_dir }}/{{ yum_repo_name }}/repodata/repomd.xml"
+  when: ansible_default_ipv4.address in groups.vsftpd
+
+- name: copy rpms to ftp directory
+  copy:
+    src: "{{ mesosphere_rpm_dir }}"
+    dest: "{{ ftp_yum_dir}}"
+    force: no
+  when: ansible_default_ipv4.address in groups.vsftpd
+
+- name: prepare repos 
+  template:
+    src: mesosphere.repo.j2
+    dest: /etc/yum.repos.d/mesosphere.repo
+    mode: 0644
+
+- name: yum make cache
+  command: yum makecache

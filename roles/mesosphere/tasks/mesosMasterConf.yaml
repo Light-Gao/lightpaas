@@ -1,0 +1,16 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171113
+
+- name: hostname configure
+  shell: echo {{ansible_default_ipv4.address}} > /etc/mesos-master/hostname
+  notify: restart mesos-master
+
+- name: quorum configure
+  shell: echo {{mesos_quorum}} > /etc/mesos-master/quorum
+  notify: restart mesos-master
+
+- name: work directory configure
+  shell: echo {{mesos_work_dir}} > /etc/mesos-master/work_dir
+  notify: restart mesos-master

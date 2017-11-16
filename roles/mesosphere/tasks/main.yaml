@@ -1,0 +1,20 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+#prepare repo first
+- include: repoPrepare.yaml
+
+#then install mesos 
+- include: mesosInstall.yaml
+
+#then configure mesos
+- include: mesosMasterConf.yaml
+  when: ansible_default_ipv4.address in groups.master
+
+- include: mesosSlaveConf.yaml
+  when: ansible_default_ipv4.address in groups.slave
+
+#then install marathon
+- include: marathonInstall.yaml

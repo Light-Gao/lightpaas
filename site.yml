@@ -1,0 +1,19 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- hosts: paas
+  remote_user: root
+  roles:
+    - common
+
+#- hosts: zookeeper
+#  remote_user: root
+#  roles:
+#    - zookeeper
+
+#- hosts: paas
+#  remote_user: root
+#  roles:
+#    - mesosphere

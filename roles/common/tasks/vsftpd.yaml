@@ -1,0 +1,8 @@
+---
+
+- name: install vsftpd
+  yum: pkg=vsftpd state=installed
+  notify: restart vsftpd
+
+- name: enable vsftpd
+  service: name=vsftpd enabled=yes

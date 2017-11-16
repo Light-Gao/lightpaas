@@ -1,0 +1,7 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- name: stop zookeeper
+  command: sh {{ zk_bin_dir }}/zkServer.sh stop

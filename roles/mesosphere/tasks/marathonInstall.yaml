@@ -1,0 +1,13 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171108
+
+- name: install marathon
+  yum: pkg=marathon state=installed
+
+- name: enable marathon
+  service: name=marathon enabled=yes
+
+- name: start marathon
+  service: name=marathon state=running

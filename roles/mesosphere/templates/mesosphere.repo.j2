@@ -1,0 +1,13 @@
+[mesosphere]
+name=mesosphere
+{% if yum_on_ftp %}
+{% for host in groups.vsftpd %}
+baseurl=ftp://{{ hostvars[host]['ansible_default_ipv4']['address'] }}/pub/{{ yum_repo_name }}
+{% endfor %}
+{% elif yum_on_local %}
+baseurl="file://{{ yum_local_dir }}/{{ yum_repo_name }}"
+{% else %}
+baseurl=https://mesosphere.org
+{% endif %}
+enabled=1
+gpgcheck=0

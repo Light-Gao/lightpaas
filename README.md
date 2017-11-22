@@ -1,37 +1,24 @@
 ## Welcome to GitHub Pages
 
-You can use the [editor on GitHub](https://github.com/Light-Gao/lightpaas/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Glad to meet you guys here, below is the details about lightpaas.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+### File Structure
 
-### Markdown
+### How to Work?
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+#### Individually
 
-```markdown
-Syntax highlighted code block
+#### Jointly
 
-# Header 1
-## Header 2
-### Header 3
+### Name from?
 
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
-```
-
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Light-Gao/lightpaas/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+My name is a special word in Chinese, it could be found in English exactly —— Highlight.
+But in China, we put family name in front of first name, so it becomes —— High·Light.
+So it is obviously, I choose Light as my first name in English, and keep Family name as it is in Chinese —— Gao.
+Now, back to this project, lightpaas, which means Light's PaaS. Yeah, got it?
 
 ### Support or Contact
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+This is a totally personal project, so I am not sure that it could be updated continously. But I will try my best.
+If you meet some bug(s), please contact me(gaoliang0806@163.com) without hesitate.
+Thanks for your help.

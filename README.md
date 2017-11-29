@@ -26,20 +26,33 @@ But make sure you understand the dependency rules among them.
 
 - common -- As said above, it's a common setting role for linux host, you may coustomize it for yourself. This is just a guideline.</br>
 Your `hosts` file may like below:</br>
->[paas]</br>
->10.10.100.1</br>
->10.10.100.2</br>
->10.10.100.3</br>
->...</br>
+>`[paas]`</br>
+>`10.10.100.1`</br>
+>`10.10.100.2`</br>
+>`10.10.100.3`</br>
+
 And if you wanna coustomize parameters for common setting, just have a look at `defaults/main.yaml` file. </br>
 Then, playbook for common role may like:</br>
->- hosts: paas</br>
->  remote_user: root</br>
->  roles:</br>
->    - common</br>
+>`- hosts: paas`</br>
+>`  remote_user: root`</br>
+>`  roles:`</br>
+>`    - common`</br>
 
 - zookeeper -- A zookeeper installation role. It relies on tarball of JDK and Zookeeper, which means we can only install them from tarball. I will update it soon, please give a while. Then, the `hosts` file may like below:</br>
+>`[zookeeper]`</br>
+>`10.10.100.1`</br>
+>`10.10.100.2`</br>
+>`10.10.100.3`</br>
 
+And playbook:
+>`- hosts: zookeeper`</br>
+>`  remote_user: root`</br>
+>`  roles:`</br>
+>`    - zookeeper`</br>
+
+Make sure you have prepared tarballs for jdk and zookeeper in the right directory defined in `defaults/main.yaml` file.
+
+- mesosphere -- A installation role for `docker`, `mesos` and `marathon`. 
 
 #### Jointly
 

@@ -12,12 +12,25 @@
 - name: time adjust
   shell: rm -f /etc/localtime; ln -s /usr/share/zoneinfo/{{os_time_zone}}  /etc/localtime ; hwclock -r
 
+- name: register crontab status
+  shell: grep ntpdate /var/spool/cron/root | wc -l
+  register: ntpdate_count
+  ignore_errors: True
+
 - name: crontab setup
   shell: echo "* 1 * * *  ntpdate {{groups.ntpserver[0]}} && hwclock -w" >> /var/spool/cron/root
-  when: ansible_default_ipv4.address not in groups.ntpserver
+  when: ansible_default_ipv4.address not in groups.ntpserver and ntpdate_count|int < 1
 
 - name: disable selinux
   shell: sed -i '7c SELINUX=disabled' {{os_selinux_conf}}
+
+- name: getenforce
+  command: getenforce
+  register: selinux_status
+
+- name: setenforce
+  shell : setenforce 0
+  when: selinux_status == 'Enforcing'
 
 - name: disable firewall
   command: systemctl disable firewalld.service

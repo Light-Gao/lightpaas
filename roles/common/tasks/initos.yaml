@@ -2,6 +2,7 @@
 #Author  Light Gao
 #Mailto  gaoliang@asiainfo.com
 #Date    20171108
+#Updated Light Gao on 20171201
 
 - name: hostname setup
   command: hostnamectl set-hostname {{newname}}

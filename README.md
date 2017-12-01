@@ -30,7 +30,14 @@ Your `hosts` file may like below:</br>
 >`10.10.100.1`</br>
 >`10.10.100.2`</br>
 >`10.10.100.3`</br>
+>
+>`[vsftpd]`</br>
+>`10.10.100.1`</br>
+>
+>`[ntpserver]`</br>
+>`10.10.100.3`</br>
 
+The group `paas` will be used in playbook shown below, but groups `vsftpd` and `ntpserver` are used in `tasks/main.yaml`, which control the right timer to execute corresponding task(s).</br>
 And if you wanna coustomize parameters for common setting, just have a look at `defaults/main.yaml` file. </br>
 Then, playbook for common role may like:</br>
 >`- hosts: paas`</br>
@@ -52,7 +59,7 @@ And playbook:
 
 Make sure you have prepared tarballs for jdk and zookeeper in the right directory defined in `defaults/main.yaml` file.
 
-- mesosphere -- A installation role for `docker`, `mesos` and `marathon`. 
+- mesosphere -- A installation role for `docker`, `mesos` and `marathon`. In this role definition, including local repository installation of `docker`, `mesos` and `marathon`.
 
 #### Jointly
 

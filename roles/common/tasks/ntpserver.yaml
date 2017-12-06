@@ -14,3 +14,18 @@
 
 - name: start ntpd
   service: name=ntpd state=running
+
+- name: ntpdate installation
+  yum: pkg=ntpdate state=installed
+  when: ansible_default_ipv4.address not in groups.vsftpd
+
+- name: register crontab status
+  shell: grep ntpdate /var/spool/cron/root | wc -l
+  register: ntpdate_count
+  when: ansible_default_ipv4.address not in groups.ntpserver
+
+- name: crontab setup
+  shell: echo "* 1 * * *  ntpdate {{groups.ntpserver[0]}} && hwclock -w" >> /var/spool/cron/root
+  when:
+    - ansible_default_ipv4.address not in groups.ntpserver
+    - ntpdate_count|int == "0"

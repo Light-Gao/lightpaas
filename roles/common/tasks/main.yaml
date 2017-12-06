@@ -11,6 +11,5 @@
 - include: repos.yaml
 
 - include: ntpserver.yaml
-  when: ansible_default_ipv4.address in groups.ntpserver
 
 - include: usermgr.yaml

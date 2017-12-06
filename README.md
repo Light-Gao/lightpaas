@@ -47,9 +47,9 @@ Then, playbook for common role may like:</br>
 
 - zookeeper -- A zookeeper installation role. It relies on tarball of JDK and Zookeeper, which means we can only install them from tarball. I will update it soon, please give a while. Then, the `hosts` file may like below:</br>
 >`[zookeeper]`</br>
->`10.10.100.1`</br>
->`10.10.100.2`</br>
->`10.10.100.3`</br>
+>`10.10.100.1 myid=0`</br>
+>`10.10.100.2 myid=1`</br>
+>`10.10.100.3 myid=2`</br>
 
 And playbook:
 >`- hosts: zookeeper`</br>
@@ -62,9 +62,19 @@ Make sure you have prepared tarballs for jdk and zookeeper in the right director
 - mesosphere -- A installation role for `docker`, `mesos` and `marathon`. In this role definition, including local repository installation of `docker`, `mesos` and `marathon`.</br>
 The `hosts` file may like below:</br>
 >`[paas]`</br>
->`10.10.100.1`</br>
->`10.10.100.2`</br>
->`10.10.100.3`</br>
+>`10.10.100.1 newname=test131`</br>
+>`10.10.100.2 newname=test132`</br>
+>`10.10.100.3 newname=test133`</br>
+>
+>`[master]`</br>
+>`10.10.100.131`</br>
+>`10.10.100.132`</br>
+>`10.10.100.133`</br>
+>
+>`[slave]`</br>
+>`10.10.100.131`</br>
+>`10.10.100.132`</br>
+>`10.10.100.133`</br>
 
 And playbook:
 >`- hosts: paas`</br>
@@ -76,9 +86,9 @@ And playbook:
 Maybe I shouldn't waste my tongue, you could put them(wirten above) together, it will work.</br>
 The `hosts` file maybe like below:</br>
 >`[paas]`</br>
->`10.10.100.1`</br>
->`10.10.100.2`</br>
->`10.10.100.3`</br>
+>`10.10.100.1 newname=test131`</br>
+>`10.10.100.2 newname=test132`</br>
+>`10.10.100.3 newname=test133`</br>
 >
 >`[vsftpd]`</br>
 >`10.10.100.1`</br>
@@ -90,6 +100,16 @@ The `hosts` file maybe like below:</br>
 >`10.10.100.1`</br>
 >`10.10.100.2`</br>
 >`10.10.100.3`</br>
+>
+>`[master]`</br>
+>`10.10.100.131`</br>
+>`10.10.100.132`</br>
+>`10.10.100.133`</br>
+>
+>`[slave]`</br>
+>`10.10.100.131`</br>
+>`10.10.100.132`</br>
+>`10.10.100.133`</br>
 
 The playbook may like below:</br>
 >`- hosts: paas`</br>

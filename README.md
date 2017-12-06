@@ -59,14 +59,60 @@ And playbook:
 
 Make sure you have prepared tarballs for jdk and zookeeper in the right directory defined in `defaults/main.yaml` file.
 
-- mesosphere -- A installation role for `docker`, `mesos` and `marathon`. In this role definition, including local repository installation of `docker`, `mesos` and `marathon`.
+- mesosphere -- A installation role for `docker`, `mesos` and `marathon`. In this role definition, including local repository installation of `docker`, `mesos` and `marathon`.</br>
+The `hosts` file may like below:</br>
+>`[paas]`</br>
+>`10.10.100.1`</br>
+>`10.10.100.2`</br>
+>`10.10.100.3`</br>
+
+And playbook:
+>`- hosts: paas`</br>
+>`  remote_user: root`</br>
+>`  roles:`</br>
+>`    - mesosphere`</br>
 
 #### Jointly
+Maybe I shouldn't waste my tongue, you could put them(wirten above) together, it will work.</br>
+The `hosts` file maybe like below:</br>
+>`[paas]`</br>
+>`10.10.100.1`</br>
+>`10.10.100.2`</br>
+>`10.10.100.3`</br>
+>
+>`[vsftpd]`</br>
+>`10.10.100.1`</br>
+>
+>`[ntpserver]`</br>
+>`10.10.100.3`</br>
+>
+>`[zookeeper]`</br>
+>`10.10.100.1`</br>
+>`10.10.100.2`</br>
+>`10.10.100.3`</br>
+
+The playbook may like below:</br>
+>`- hosts: paas`</br>
+>`  remote_user: root`</br>
+>`  roles:`</br>
+>`    - common`</br>
+>
+>`- hosts: zookeeper`</br>
+>`  remote_user: root`</br>
+>`  roles:`</br>
+>`    - zookeeper`</br>
+>
+>`- hosts: paas`</br>
+>`  remote_user: root`</br>
+>`  roles:`</br>
+>`    - mesosphere`</br>
+
+Enjoy!!!
 
 ### Name from?
 
 My name is a special word in Chinese, it could be found in English exactly —— Highlight.</br>
-But in China, we put family name in front of first name, so it becomes —— High·Light.</br>
+But in China, we put family name in front of given name, so it becomes —— High·Light.</br>
 So it is obviously, I choose Light as my first name in English, and keep Family name as it is in Chinese —— Gao.</br>
 Now, back to this project, lightpaas, which means Light's PaaS. Yeah, got it?
 

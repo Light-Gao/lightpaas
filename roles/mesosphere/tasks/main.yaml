@@ -6,6 +6,8 @@
 #prepare repo first
 - include: repoPrepare.yaml
 
+- include: dockerInstall.yaml
+
 #then install mesos 
 - include: mesosInstall.yaml
 

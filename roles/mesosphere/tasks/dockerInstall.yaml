@@ -1,0 +1,13 @@
+---
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20171206
+
+- name: install docker-engine
+  yum: pkg=docker-engine state=installed
+
+- name: enable docker.service
+  service: name=docker enabled=yes
+
+- name: start docker.service
+  service: name=docker state=started

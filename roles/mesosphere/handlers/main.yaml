@@ -13,3 +13,6 @@
 - name: restart marathon
   service: name=marathon state=restarted
 
+- name: restart docker-engine
+  service: name=docker state=restarted
+

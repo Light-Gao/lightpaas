@@ -8,12 +8,12 @@
   roles:
     - common
 
-#- hosts: zookeeper
-#  remote_user: root
-#  roles:
-#    - zookeeper
+- hosts: zookeeper
+  remote_user: root
+  roles:
+    - zookeeper
 
-#- hosts: paas
-#  remote_user: root
-#  roles:
-#    - mesosphere
+- hosts: paas
+  remote_user: root
+  roles:
+    - mesosphere

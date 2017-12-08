@@ -1,0 +1,10 @@
+[{{yum_repo_name}}]
+name={{yum_repo_name}}
+{%if yum_on_ftp%}
+baseurl={{yum_ftp_url}}
+{%else%}
+baseurl={{yum_local_dir}}
+{%endif%}
+enabled=1
+gpgcheck=0
+

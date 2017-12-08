@@ -9,3 +9,6 @@
     src: centos.repo.j2
     dest: /etc/yum.repos.d/centos.repo
     mode: 0644
+
+- name: prepare repo cache
+  command: yum makecache

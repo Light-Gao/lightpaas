@@ -20,18 +20,13 @@ os_users:
     home: /home/xjtest
     passwd: abc123
 
-#os_user_passwd: abc123
-#os_user_id: 806
-#os_group: "{{os_user}}"
-#os_group_id: "{{os_user_id}}"
 
 #yum params
-yum_repo_name: mesosphere
-
+yum_repo_name: centos
 yum_on_ftp: true
 yum_on_local: false
 
-yum_ftp_url: "ftp://{{ play_hosts }}/pub/{{ yum_repo_name }}"
-yum_local_dir: /opt/paas/downloads
+yum_ftp_url: "ftp://{{ groups.vsftpd[0] }}/pub/{{ yum_repo_name }}"
+yum_local_dir: /opt/paas/centos
 
 

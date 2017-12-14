@@ -6,6 +6,9 @@
 #os params
 os_time_zone: Asia/Shanghai
 os_selinux_conf: /etc/selinux/config
+os_nproc_num: 20480
+os_nofile_num: 20480
+
 
 #os users info define
 os_users:

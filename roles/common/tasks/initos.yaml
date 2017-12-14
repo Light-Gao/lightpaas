@@ -36,4 +36,9 @@
     dest: /etc/hosts
     mode: 0644
 
+- name: ulimit setting
+  template:
+    src: limits.conf.j2
+    dest: /etc/security/limits.conf
+    mode: 0644
 

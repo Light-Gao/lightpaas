@@ -58,17 +58,9 @@
 #ftp             hard    nproc           0
 #@student        -       maxlogins       4
 
-*  soft  nproc {{os_nproc_num}}
-*  hard  nproc {{os_nproc_num}}
-*  soft  nofile {{os_nofile_num}}
-*  hard  nofile {{os_nofile_num}}
-
-{%for usr in {{os_users.key}}%}
-{{usr}}  soft  nproc  {{os_nproc_num}}
-{{usr}}  hard  nproc  {{os_nproc_num}}
-{{usr}}  soft  nofile  {{os_nofile_num}}
-{{usr}}  hard  nofile  {{os_nofile_num}}
-{%end for%}
-
+*  soft  nproc {{os_ulimit_num}}
+*  hard  nproc {{os_ulimit_num}}
+*  soft  nofile {{os_ulimit_num}}
+*  hard  nofile {{os_ulimit_num}}
 
 # End of file

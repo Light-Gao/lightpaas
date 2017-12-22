@@ -2,7 +2,6 @@
 #Author  Light Gao
 #Mailto  gaoliang@asiainfo.com
 #Date    20171108
-#Updated Light Gao on 20171201
 
 - name: hostname setup
   command: hostnamectl set-hostname {{newname}}
@@ -36,9 +35,16 @@
     dest: /etc/hosts
     mode: 0644
 
-- name: ulimit setting
+- name: root ulimit setting
   template:
     src: limits.conf.j2
     dest: /etc/security/limits.conf
     mode: 0644
+
+- name: other user ulimit setting
+  shell: sed -i '$a {{item[0]}}  {{item[1]}}  {{item[2]}} {{os_ulimit_num}}' {{os_ulimit_conf}}
+  with_nested:
+    - "{{os_user_list}}"
+    - ['soft', 'hard']
+    - ['nofile','nproc']
 

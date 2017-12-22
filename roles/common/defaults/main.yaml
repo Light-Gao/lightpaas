@@ -6,9 +6,8 @@
 #os params
 os_time_zone: Asia/Shanghai
 os_selinux_conf: /etc/selinux/config
-os_nproc_num: 20480
-os_nofile_num: 20480
-
+os_ulimit_conf: /etc/security/limits.conf
+os_ulimit_num: 20480
 
 #os users info define
 os_users:
@@ -22,6 +21,7 @@ os_users:
     group: xjtest
     home: /home/xjtest
     passwd: abc123
+os_user_list: ['light', 'xjtest']
 
 
 #yum params

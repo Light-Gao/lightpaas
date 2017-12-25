@@ -4,7 +4,7 @@
 #Date    20171108
 
 - name: hostname setup
-  command: hostnamectl set-hostname {{newname}}
+  command: hostnamectl set-hostname {{os_hostname}}
   
 - name: timezone setup
   command: timedatectl set-timezone {{os_time_zone}}

@@ -30,4 +30,5 @@
   when: not zk_standalone
 
 - name: config myid
-  shell: echo {{ myid }} > "{{ zk_data_dir }}/myid"
+  shell: echo {{ zk_node_myid }} > myid
+    chdir="{{ zk_data_dir }}"

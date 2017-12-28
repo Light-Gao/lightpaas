@@ -4,10 +4,16 @@
 #Mailto gaoliang@asiainfo.com
 #Date   20171110
 
-- name: prepare repos file
+- name: prepare offline(local fs or ftp) repos file
   template:
     src: centos.repo.j2
     dest: /etc/yum.repos.d/centos.repo
+    mode: 0644
+
+- name: prepare online(aliyun mirrors) repos file
+  template:
+    src: aliyun-centos.repo.j2
+    dest: /etc/yum.repos.d/aliyun-centos.repo
     mode: 0644
 
 - name: prepare repo cache

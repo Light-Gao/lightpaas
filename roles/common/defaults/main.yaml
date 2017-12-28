@@ -25,11 +25,12 @@ os_user_list: ['light', 'xjtest']
 
 
 #yum params
-yum_repo_name: centos
+yum_offline_repo_name: centos
+yum_online_repo_name: aliyun-centos
 yum_on_ftp: true
 yum_on_local: false
 
-yum_ftp_url: "ftp://{{ groups.vsftpd[0] }}/pub/{{ yum_repo_name }}"
+yum_ftp_url: "ftp://{{ groups.vsftpd[0] }}/pub/{{ yum_offline_repo_name }}"
 yum_local_dir: /opt/paas/centos
 
 

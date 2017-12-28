@@ -1,0 +1,7 @@
+[{{yum_online_repo_name}}]
+name={{yum_online_repo_name}}
+baseurl=https://mirrors.aliyun.com/centos/{{ansible_distribution_major_version}}/os/{{ansible_architecture}}/
+enabled=0
+gpgcheck=1
+gpgkey=https://mirrors.aliyun.com/centos/{{ansible_distribution_major_version}}/os/{{ansible_architecture}}/RPM-GPG-KEY-CentOS-{{ansible_distribution_major_version}}
+

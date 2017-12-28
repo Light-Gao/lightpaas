@@ -8,7 +8,8 @@
 - include: vsftpd.yaml
   when: ansible_default_ipv4.address in groups.vsftpd
 
-- include: repos.yaml
+- include: centosRepo.yaml
+  when: ansible_os_family != 'Debian'
 
 - include: ntpserver.yaml
 

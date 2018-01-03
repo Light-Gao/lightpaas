@@ -15,6 +15,7 @@
     src: "{{ zk_install_dir }}/zookeeper-{{ zk_version }}.tgz"
     dest: "{{ zk_install_dir }}"
     creates: "{{ zk_data_dir }}/myid"
+  when: not zk_standalone
 
 - name: config zoo.cfg
   template:
@@ -32,3 +33,4 @@
 - name: config myid
   shell: echo {{ zk_node_myid }} > myid
     chdir="{{ zk_data_dir }}"
+  when: not zk_standalone

@@ -3,5 +3,13 @@
 #Mailto  gaoliang@asiainfo.com
 #Date    20171108
 
+- name: register zookeeper if alive
+  shell: sh zkServer.sh status
+    chdir="{{ zk_bin_dir }}"
+  ignore_errors: true
+  register: zk_status
+
 - name: start zookeeper
-  command: sh {{ zk_bin_dir }}/zkServer.sh start
+  shell: sh zkServer.sh start
+    chdir="{{ zk_bin_dir }}"
+  when: zk_status.stdout.find('not running') != -1

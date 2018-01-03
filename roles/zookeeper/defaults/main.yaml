@@ -5,12 +5,13 @@
 
 #########jdk configuration
 #depends
-jdk_version: 1.8.0_102
-jdk_src_dir: /opt/paas/jdk{{ jdk_version }}.tgz
+jdk_tarball_version: 1.8.0_102
+jdk_online_version: 1.8.0
+jdk_src_dir: /opt/paas/jdk{{ jdk_tarball_version }}.tgz
 jdk_install_dir: /opt
 
 #dependless
-jdk_install_home: "{{ jdk_install_dir }}/jdk{{ jdk_version }}"
+jdk_install_home: "{{ jdk_install_dir }}/jdk{{ jdk_tarball_version }}"
 jdk_tarball: true
 
 

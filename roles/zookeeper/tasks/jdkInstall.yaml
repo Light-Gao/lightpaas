@@ -7,19 +7,28 @@
   copy:
     src: "{{ jdk_src_dir }}"
     dest: "{{ jdk_install_dir }}"
+  when: "{{jdk_tarball}}"
 
 - name: unarchive jdk tarball
   unarchive:
     copy: no
-    src: "{{ jdk_install_dir }}/jdk{{ jdk_version }}.tgz"
+    src: "{{ jdk_install_dir }}/jdk{{ jdk_tarball_version }}.tgz"
     dest: "{{ jdk_install_dir }}"
-    creates: "{{ jdk_install_dir }}/jdk{{ jdk_version }}/bin/java"
+    creates: "{{ jdk_install_dir }}/jdk{{ jdk_tarball_version }}/bin/java"
+  when: "{{jdk_tarball}}"
 
 - name: config java 
   template:
     src: bash_profile.j2
     dest: ~/.bash_profile
-
+  when: "{{jdk_tarball}}"
 
 - name: source profile
   shell: source ~/.bash_profile
+  when: "{{jdk_tarball}}"
+
+- name: install openjdk online
+  yum: 
+    name=java-{{jdk_online_version}}-openjdk
+    state=installed
+  when: "not {{jdk_tarball}}"

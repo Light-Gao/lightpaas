@@ -6,6 +6,9 @@
 #jdk first
 - include: jdkInstall.yaml
 
+#stop zookeeper if alive
+- include: zookeeperStop.yaml
+
 #then zookeeper
 - include: zookeeperInstall.yaml
 

@@ -24,10 +24,10 @@
   when: selinux_status == 'Enforcing'
 
 - name: disable firewall
-  command: systemctl disable firewalld.service
+  service: name=firewalld enabled=no
 
 - name: stop firewall
-  command: systemctl stop firewalld.service
+  service: name=firewalld state=stopped
 
 - name: hosts configure
   template:

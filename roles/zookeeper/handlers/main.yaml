@@ -1,0 +1,11 @@
+---
+
+#Author  Light Gao
+#Mailto  gaoliang@asiainfo.com
+#Date    20180126
+
+- name: restart zookeeper
+  service: name=zookeeperd state=restarted
+
+- name: stop zookeeper
+  service: name=zookeeperd state=stopped

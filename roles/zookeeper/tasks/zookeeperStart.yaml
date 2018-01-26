@@ -8,8 +8,17 @@
     chdir="{{ zk_bin_dir }}"
   ignore_errors: true
   register: zk_status
+  when: not zk_install_service
 
 - name: start zookeeper
   shell: sh zkServer.sh start
     chdir="{{ zk_bin_dir }}"
-  when: zk_status.stdout.find('not running') != -1
+  when: 
+    - zk_status.stdout.find('not running') != -1
+    - not zk_install_service
+
+- name: restart zookeeper by systemd
+  debug:
+    msg: "Restart zookeeper by systemd!"
+  when: zk_install_service
+  notify: restart zookeeper

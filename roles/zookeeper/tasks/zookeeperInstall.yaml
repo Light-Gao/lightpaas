@@ -34,3 +34,8 @@
   shell: echo {{ zk_node_myid }} > myid
     chdir="{{ zk_data_dir }}"
   when: not zk_standalone
+
+- name: zookeeperd.service
+  template:
+    src: zookeeperd.service.j2
+    dest: /usr/lib/systemd/system/zookeeperd.service

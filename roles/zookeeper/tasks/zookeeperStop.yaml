@@ -8,8 +8,17 @@
     chdir="{{ zk_bin_dir }}"
   ignore_errors: true
   register: zk_status
+  when: not zk_install_service
 
 - name: stop zookeeper
   shell: sh zkServer.sh stop
     chdir="{{ zk_bin_dir }}"
-  when: zk_status.stdout.find('Mode') != -1
+  when:
+    - zk_status.stdout.find('Mode') != -1
+    - not zk_install_service
+
+- name: stop zookeeper by systemd
+  debug:
+    msg: "Stop zookeeper by systemd!"
+  when: zk_install_service
+  notify: stop zookeeper

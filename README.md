@@ -4,6 +4,9 @@ Glad to meet you guys here, below is the details about lightpaas.</br>
 Even people who clone this project would follow the Apache Linsence, but never mind, just treat it as your own.</br>
 I will be happy if this helps you.
 
+### Dependency
+- Ansible 1.7
+
 ### File Structure
 
 I don't put any `hosts` file in this repo(so far), so what you could see are just roles seeming like individually.</br>
